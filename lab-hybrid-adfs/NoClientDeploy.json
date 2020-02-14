@@ -112,6 +112,7 @@
     "adfsVMNameSuffix": "fs",
     "wapVMNameSuffix": "px",
     "location": "[resourceGroup().location]",
+    "vmNamePrefix":  "[parameters('adDomainName')]",
     "companyNamePrefix": "[split(parameters('adDomainName'),'.')[0]]",
     "adfsVMName": "[toupper(concat(variables('vmNamePrefix'), variables('adfsVMNameSuffix')))]",
     "adVMName": "[toupper(concat(variables('vmNamePrefix'), variables('addcVMNameSuffix')))]",

@@ -108,6 +108,7 @@
     "wapVMNameSuffix": "px",
     "location": "[resourceGroup().location]",
     "companyNamePrefix": "[split(parameters('adDomainName'),'.')[0]]",
+    "vmNamePrefix":  "[parameters('adDomainName')]",
     "adfsVMName": "[toupper(concat(variables('vmNamePrefix'), variables('adfsVMNameSuffix')))]",
     "adVMName": "[toupper(concat(variables('vmNamePrefix'), variables('addcVMNameSuffix')))]",
     "adNSGName": "[concat('INT-AD', parameters('deploymentNumber'))]",
