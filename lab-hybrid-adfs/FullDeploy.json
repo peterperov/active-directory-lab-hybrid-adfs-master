@@ -27,6 +27,11 @@
       "defaultValue": "contoso.com",
       "metadata": { "description": "Two-part internal AD name - short/NB name will be first part ('contoso')." }
     },
+    "vmNamePrefix": {
+      "type": "string",
+      "defaultValue": "mydomain",
+      "metadata": { "description": "Prefix for VM Names" }
+    },
     "usersArray": {
       "type": "array",
       "defaultValue": [
@@ -103,8 +108,8 @@
     "wapVMNameSuffix": "px",
     "location": "[resourceGroup().location]",
     "companyNamePrefix": "[split(parameters('adDomainName'),'.')[0]]",
-    "adfsVMName": "[toupper(concat(variables('companyNamePrefix'), variables('adfsVMNameSuffix')))]",
-    "adVMName": "[toupper(concat(variables('companyNamePrefix'), variables('addcVMNameSuffix')))]",
+    "adfsVMName": "[toupper(concat(variables('vmNamePrefix'), variables('adfsVMNameSuffix')))]",
+    "adVMName": "[toupper(concat(variables('vmNamePrefix'), variables('addcVMNameSuffix')))]",
     "adNSGName": "[concat('INT-AD', parameters('deploymentNumber'))]",
     "virtualNetworkName": "[concat(variables('companyNamePrefix'), parameters('deploymentNumber'), '-vnet')]",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
@@ -124,7 +129,7 @@
     "publicIPAddressDNSName": "[tolower(concat(variables('companyNamePrefix'),parameters('deploymentNumber'),'-adfs'))]",
     "rdpIPAddressDNSName": "[tolower(concat(variables('companyNamePrefix'),'-adfs-rdp'))]",
     "storageAccountType": "Standard_LRS",
-    "wapVMName": "[toupper(concat(variables('companyNamePrefix'), variables('wapVMNameSuffix')))]",
+    "wapVMName": "[toupper(concat(variables('vmNamePrefix'), variables('wapVMNameSuffix')))]",
     "adfsTemplateURI": "[concat(parameters('assetLocation'),'Templates/adfsDeploy.json')]",
     "nsgTemplateURI": "[concat(parameters('assetLocation'),'Templates/NSGs.json')]",
     "vnetTemplateURI": "[concat(parameters('assetLocation'),'Templates/deployVNet.json')]",
